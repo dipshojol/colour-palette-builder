@@ -1,3 +1,14 @@
 {
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "editor.fontSize": 16,
+  "editor.minimap.enabled": false,
+  "eslint.alwaysShowStatus": true,
+  "editor.tabSize": 2,
+  "[markdown]": {
+      "editor.tabSize": 4
+  },
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+  }
 }
+
