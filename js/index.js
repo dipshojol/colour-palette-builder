@@ -1,3 +1,5 @@
+const { useState } = React;
+
 /* 
 Looking at the static HTML, identify the structure and potential components:
   - App
@@ -22,40 +24,52 @@ Looking at the static HTML, identify the structure and potential components:
 // Store the values for when we return
 // Allow the user to create a new Swatch 
 
-const Channel = (props) => {
 
+// REACT VARIABLE TYPES:
+// props = setup variables for a component, passed as an attribute
+// state = local to a component, will track values over the life of the component, will trigger rerender
+// local = just regular local variables
+
+
+const Channel = ( {value} ) => {
+
+  // Take the prop "value", store it locally as a state variable "num"
+  const [rgb, setRgb] = useState(value);
+
+
+  console.log(`Render: <Channel />`);
   return (
     <div className="channel">
-      <button type="button" className="btn up">+</button>
-      <input type="text" className="txt" value={props.value} />
-      <button type="button" className="btn down">-</button>
+      <button type="button" className="btn up" onClick={ event => setRgb( rgb + 10 ) }>+</button>
+      <input type="text" className="txt" value={ rgb } onChange={ event => setRgb( parseInt(event.target.value) ) } />
+      <button type="button" className="btn down" onClick={ event => setRgb( rgb - 10 ) }>-</button>
     </div>
   );
 }
 
-const Swatch = (props) => {
+const Swatch = ( {red, green, blue} ) => {
 
   const styles = {
-    backgroundColor: `rgb( ${props.red}, ${props.green}, ${props.blue} )`,
+    backgroundColor: `rgb( ${red}, ${green}, ${blue} )`,
   };
 
   return (
     <li className="swatch" style={ styles }>
       <span>rgb(</span>
-      <Channel value={props.red} />
-      <Channel value={props.green} />
-      <Channel value={props.blue} />
+      <Channel value={red} />
+      <Channel value={green} />
+      <Channel value={blue} />
       <span>);</span>
     </li>
 
   );
 }
 
-const Palette = (props) => {
+const Palette = ( {swatches} ) => {
 
   // Create one <Swatch> for each props.swatches
   // Iterate through the Array we received using map
-  const allSwatches = props.swatches.map( (col, i) => <Swatch key={i} red={col.r} green={col.g} blue={col.b} /> )
+  const allSwatches = swatches.map( (col, i) => <Swatch key={i} red={col.r} green={col.g} blue={col.b} /> )
 
   return (
     <ul className="palette">
