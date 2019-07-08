@@ -22,50 +22,51 @@ Looking at the static HTML, identify the structure and potential components:
 // Store the values for when we return
 // Allow the user to create a new Swatch 
 
-const Channel = () => {
+const Channel = (props) => {
 
-  return ();
+  return (
+    <div className="channel">
+      <button type="button" className="btn up">+</button>
+      <input type="text" className="txt" value={props.value} />
+      <button type="button" className="btn down">-</button>
+    </div>
+  );
 }
 
-const Swatch = () => {
+const Swatch = (props) => {
 
-  return ();
+  const styles = {
+    backgroundColor: `rgb( ${props.red}, ${props.green}, ${props.blue} )`,
+  };
+
+  return (
+    <li className="swatch" style={ styles }>
+      <span>rgb(</span>
+      <Channel value={props.red} />
+      <Channel value={props.green} />
+      <Channel value={props.blue} />
+      <span>);</span>
+    </li>
+
+  );
 }
 
 const Palette = () => {
 
-  return ();
+  return (
+    <ul className="palette">
+      <Swatch red={255} green={0} blue={255} />
+      <Swatch red={0} green={255} blue={255} />
+      <Swatch red={255} green={255} blue={0} />
+    </ul>
+  );
 }
 
 const App = () => {
 
-  const styles = {
-    backgroundColor: `rgb(0,0,0)`,
-  };
-
   return (
     <main id="app" className="app">
-      <ul className="palette">
-        <li className="swatch" style={ styles }>
-          <span>rgb(</span>
-          <div className="channel">
-            <button type="button" className="btn up">+</button>
-            <input type="text" className="txt" value="0" />
-            <button type="button" className="btn down">-</button>
-          </div>
-          <div className="channel">
-            <button type="button" className="btn up">+</button>
-            <input type="text" className="txt" value="0" />
-            <button type="button" className="btn down">-</button>
-          </div>
-          <div className="channel">
-            <button type="button" className="btn up">+</button>
-            <input type="text" className="txt" value="0" />
-            <button type="button" className="btn down">-</button>
-          </div>
-          <span>);</span>
-        </li>
-      </ul>
+      <Palette />
     </main>
   );
 }
