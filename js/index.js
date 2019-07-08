@@ -25,40 +25,40 @@ Looking at the static HTML, identify the structure and potential components:
 // Allow the user to create a new Swatch 
 
 
-// REACT VARIABLE TYPES:
-// props = setup variables for a component, passed as an attribute
-// state = local to a component, will track values over the life of the component, will trigger rerender
-// local = just regular local variables
 
-
-const Channel = ( {value} ) => {
+const Channel = ( {value, changeRgb} ) => {
 
   // Take the prop "value", store it locally as a state variable "num"
-  const [rgb, setRgb] = useState(value);
+  //const [rgb, setRgb] = useState(value);
+  const rgb = value;
 
 
   console.log(`Render: <Channel />`);
   return (
     <div className="channel">
-      <button type="button" className="btn up" onClick={ event => setRgb( rgb + 10 ) }>+</button>
-      <input type="text" className="txt" value={ rgb } onChange={ event => setRgb( parseInt(event.target.value) ) } />
-      <button type="button" className="btn down" onClick={ event => setRgb( rgb - 10 ) }>-</button>
+      <button type="button" className="btn up" onClick={ event => changeRgb( rgb + 10 ) }>+</button>
+      <input type="text" className="txt" value={ rgb } onChange={ event => changeRgb( parseInt(event.target.value) ) } />
+      <button type="button" className="btn down" onClick={ event => changeRgb( rgb - 10 ) }>-</button>
     </div>
   );
 }
 
 const Swatch = ( {red, green, blue} ) => {
 
+  const [r, setR] = useState(red);
+  const [g, setG] = useState(green);
+  const [b, setB] = useState(blue);
+
   const styles = {
-    backgroundColor: `rgb( ${red}, ${green}, ${blue} )`,
+    backgroundColor: `rgb( ${r}, ${g}, ${b} )`,
   };
 
   return (
     <li className="swatch" style={ styles }>
       <span>rgb(</span>
-      <Channel value={red} />
-      <Channel value={green} />
-      <Channel value={blue} />
+      <Channel value={r} changeRgb={setR} />
+      <Channel value={g} changeRgb={setG} />
+      <Channel value={b} changeRgb={setB} />
       <span>);</span>
     </li>
 
