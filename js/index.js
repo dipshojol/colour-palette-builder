@@ -51,22 +51,30 @@ const Swatch = (props) => {
   );
 }
 
-const Palette = () => {
+const Palette = (props) => {
+
+  // Create one <Swatch> for each props.swatches
+  // Iterate through the Array we received using map
+  const allSwatches = props.swatches.map( (col, i) => <Swatch key={i} red={col.r} green={col.g} blue={col.b} /> )
 
   return (
     <ul className="palette">
-      <Swatch red={255} green={0} blue={255} />
-      <Swatch red={0} green={255} blue={255} />
-      <Swatch red={255} green={255} blue={0} />
+      {allSwatches}
     </ul>
   );
 }
 
 const App = () => {
 
+  const palette1 = [
+    {r: 255, g: 0, b: 255},
+    {r: 0, g: 255, b: 255},
+    {r: 255, g: 255, b: 0},
+  ];
+
   return (
     <main id="app" className="app">
-      <Palette />
+      <Palette swatches={ palette1 } />
     </main>
   );
 }
