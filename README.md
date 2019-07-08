@@ -28,12 +28,13 @@ const Greeting = ( {name} ) => {
 
   const [freq, setFreq] = useState(0);
   setFreq(++freq);
-  const msg = <h1>Hello { name }, for the { freq } time!</h1>;
 
-  return msg;
+  const plur = (freq == 1) ? `time` : `times`;
+
+  return <h1>Hello { name }, you have visited here { freq } { plur }.</h1>;
 }
 ```
-In the example above, `msg` is a local variable, `name` is a prop, `freq` is a state, 
+In the example above, `plur` is a local variable, `name` is a prop, `freq` is a state, 
 
 
 ### Flow of Information
