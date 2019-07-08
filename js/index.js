@@ -1,30 +1,41 @@
 /* 
-Looking at the HTML, identify the potential components:
+Looking at the static HTML, identify the structure and potential components:
   - App
     - Palette
       - Swatch
         -Channel
         -Channel
         -Channel
-      - Swatch
-        -Channel
-        -Channel
-        -Channel
-      - Swatch
-        -Channel
-        -Channel
-        -Channel
-    - Palette
-      - Swatch
-        -Channel
-        -Channel
-        -Channel
-      - Swatch
-        -Channel
-        -Channel
-        -Channel 
+      ...
+    ...
 */
 
+// LAB:
+// Complete each React Component to return its own static HTML
+// Test by creating multiple Swatch components
+// Have each Swatch created using 3 properties (one for each channel)
+// Ensure the Channel's <input> value is set to the appropriate number to start
+
+// NEXT:
+// Create the colours from an Array defined in <App />
+// Allow the colours to be interactive
+// Store the values for when we return
+// Allow the user to create a new Swatch 
+
+const Channel = () => {
+
+  return ();
+}
+
+const Swatch = () => {
+
+  return ();
+}
+
+const Palette = () => {
+
+  return ();
+}
 
 const App = () => {
 
