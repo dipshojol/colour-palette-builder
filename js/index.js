@@ -25,6 +25,12 @@ Looking at the static HTML, identify the structure and potential components:
 // Allow the user to create a new Swatch 
 
 
+// LAB (Week 12):
+// - Turn this into a react project
+// - Prevent negatives, or greater than 255
+// - Allow for multiple Palettes in the App
+//    - Note: The CSS for the "App" has to change to accomodate multiple columns
+
 
 const Channel = ( {value, changeRgb} ) => {
 
@@ -48,6 +54,7 @@ const Swatch = ( {red, green, blue} ) => {
   const [r, setR] = useState(red);
   const [g, setG] = useState(green);
   const [b, setB] = useState(blue);
+
 
   const styles = {
     backgroundColor: `rgb( ${r}, ${g}, ${b} )`,
@@ -73,7 +80,7 @@ const Palette = ( {swatches} ) => {
 
   return (
     <ul className="palette">
-      {allSwatches}
+      { allSwatches }
     </ul>
   );
 }
