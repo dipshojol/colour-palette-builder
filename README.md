@@ -23,7 +23,7 @@ There are plenty of developer tools that aid in the development of React. At min
 - **props**: Setup variables for a component, passed as an attribute and stored in a parameter object {props}
 - **state**: Local to a component instance, tracks values over the life of the component, will trigger the component to rerender when modified (so generally, only stores values that would result in modified UI)
 
-```
+```javascript
 const Greeting = ( {name} ) => {
 
   const [freq, setFreq] = useState(0);
