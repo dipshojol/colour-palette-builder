@@ -32,22 +32,6 @@ Looking at the static HTML, identify the structure and potential components:
 //    - Note: The CSS for the "App" has to change to accomodate multiple columns
 
 
-const Channel = ( {value, changeRgb} ) => {
-
-  // Take the prop "value", store it locally as a state variable "num"
-  //const [rgb, setRgb] = useState(value);
-  const rgb = value;
-
-
-  console.log(`Render: <Channel />`);
-  return (
-    <div className="channel">
-      <button type="button" className="btn up" onClick={ event => changeRgb( rgb + 10 ) }>+</button>
-      <input type="text" className="txt" value={ rgb } onChange={ event => changeRgb( parseInt(event.target.value) ) } />
-      <button type="button" className="btn down" onClick={ event => changeRgb( rgb - 10 ) }>-</button>
-    </div>
-  );
-}
 
 const Swatch = ( {red, green, blue} ) => {
 
